@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.util.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+// import com.eclipsesource.json.Json;
 
 class Solution {
     public List<Integer> partitionLabels(String S) {
@@ -20,7 +21,7 @@ class Solution {
                 start = i;
             }
             char currChar = S.charAt(i);
-            int lastPos = S.lastIndexOf​(currChar);
+            int lastPos = S.lastIndexOf(currChar);
             // System.out.println("curr char " + currChar + ", last char " + lastPos);
             if (lastPos > end) {
                 end = lastPos;
@@ -33,12 +34,16 @@ class Solution {
     }
 }
 
-public class MainClass {
+// public class MainClass {
+public class p763 {
     public static String stringToString(String input) {
         if (input == null) {
             return "null";
         }
-        return Json.value(input).toString();
+        // System.out.println("yyy : " + Json.value(input).getClass().getName());
+        // console# yyy : com.eclipsesource.json.JsonString
+        // return Json.value(input).toString();
+        return input;
     }
     
     public static String integerArrayListToString(List<Integer> nums, int length) {
