@@ -1,0 +1,21 @@
+[11:06:16] xuche2@XUCHE2-M-G4U2: ~/ws/c-chx/leetcode/ProblemSet
+
+$ vim p7.cpp
+
+
+
+[11:06:32] xuche2@XUCHE2-M-G4U2: ~/ws/c-chx/leetcode/ProblemSet
+
+$ g++ p7.cpp -o p7
+
+
+
+[11:06:43] xuche2@XUCHE2-M-G4U2: ~/ws/c-chx/leetcode/ProblemSet
+
+$ ./p7
+
+123
+
+321
+
+^C
