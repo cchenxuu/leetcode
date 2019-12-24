@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.*;
 
 /* -----------------------------------
  *  WARNING:
@@ -20,7 +21,7 @@ import java.io.InputStreamReader;
 class ListNode {
     int val;
     ListNode next;
-    ListNode(int x) { val = x; }
+    ListNode(int x) { val = x; next = null; }
 }
 
 
@@ -73,47 +74,47 @@ class Solution {
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        Solution.dumpList(l1);
-        Solution.dumpList(l2);
-        ListNode rl1 = Solution.reverseList(l1);
-        Solution.dumpList(rl1);
-        ListNode rl2 = Solution.reverseList(l2);
-        Solution.dumpList(rl2);
+        // Solution.dumpList(l1);
+        // Solution.dumpList(l2);
+        // ListNode rl1 = Solution.reverseList(l1);
+        ListNode rl1 = l1;
+        // Solution.dumpList(rl1);
+        // ListNode rl2 = Solution.reverseList(l2);
+        ListNode rl2 = l2;
+        // Solution.dumpList(rl2);
 
-        ListNode p1 = rl1;
-        ListNode p2 = rl2;
-        ListNode result = null, ptr = null;
+        ListNode result = null;
+        ListNode ptr = null;
         int carry = 0;
         
         while (true) {
             int v1, v2;
-            if (p1 != null) {
-                v1 = p1.val;
-                p1 = p1.next;
+            if (rl1 != null) {
+                v1 = rl1.val;
+                rl1 = rl1.next;
             } else {
                 v1 = 0;
             }
-            if (p2 != null) {
-                v2 = p2.val;
-                p2 = p2.next;
+            if (rl2 != null) {
+                v2 = rl2.val;
+                rl2 = rl2.next;
             } else {
                 v2 = 0;
             }
             int val = v1 + v2 + carry;
-            System.out.println("val" + val);
             
             if (result == null) {
-                result = new ListNode(val / 10);
+                result = new ListNode(val % 10);
+                result.next = null;
                 ptr = result;
             } else {
-                ptr.next = new ListNode(val / 10);
+                ptr.next = new ListNode(val % 10);
                 ptr = ptr.next;
-            }
-
-            carry = val % 10;
-
-            if (p1 == null && p2 == null && carry == 0) {
                 ptr.next = null;
+            }
+            carry = val / 10;
+
+            if (rl1 == null && rl2 == null && carry == 0) {
                 break;
             }
         }
