@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 /* -----------------------------------
  *  WARNING:
  * -----------------------------------
@@ -11,14 +15,17 @@
 
 /**
  * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
  */
+
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) { val = x; }
+}
+
+
 class Solution {
-    static private void dumpList(ListNode l) {
+    private static void dumpList(ListNode l) {
         System.out.println("----");
         ListNode n = l;
         int i = 0;
@@ -30,7 +37,7 @@ class Solution {
         System.out.println("----");
     }
 
-    static private ListNode reverseList(ListNode l) {
+    private static ListNode reverseList(ListNode l) {
         ListNode prev, curr, next;
         prev = null;
         curr = l;
@@ -66,12 +73,12 @@ class Solution {
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        // Solution.dumpList(l1);
-        // Solution.dumpList(l2);
+        Solution.dumpList(l1);
+        Solution.dumpList(l2);
         ListNode rl1 = Solution.reverseList(l1);
-        // Solution.dumpList(rl1);
+        Solution.dumpList(rl1);
         ListNode rl2 = Solution.reverseList(l2);
-        // Solution.dumpList(rl2);
+        Solution.dumpList(rl2);
 
         ListNode p1 = rl1;
         ListNode p2 = rl2;
@@ -93,6 +100,7 @@ class Solution {
                 v2 = 0;
             }
             int val = v1 + v2 + carry;
+            System.out.println("val" + val);
             
             if (result == null) {
                 result = new ListNode(val / 10);
@@ -110,13 +118,13 @@ class Solution {
             }
         }
 
-        // Solution.dumpList(result);
+        Solution.dumpList(result);
 
         return result;
     }
 }
 
-public class MainClass {
+public class p2 {
     public static int[] stringToIntegerArray(String input) {
         input = input.trim();
         input = input.substring(1, input.length() - 1);
@@ -163,16 +171,21 @@ public class MainClass {
     public static void main(String[] args) throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         String line;
-        while ((line = in.readLine()) != null) {
-            ListNode l1 = stringToListNode(line);
-            line = in.readLine();
-            ListNode l2 = stringToListNode(line);
-            
-            ListNode ret = new Solution().addTwoNumbers(l1, l2);
-            
-            String out = listNodeToString(ret);
-            
-            System.out.print(out);
+        try {
+
+            while ((line = in.readLine()) != null) {
+                ListNode l1 = stringToListNode(line);
+                line = in.readLine();
+                ListNode l2 = stringToListNode(line);
+                
+                ListNode ret = new Solution().addTwoNumbers(l1, l2);
+                
+                String out = listNodeToString(ret);
+                
+                System.out.print(out);
+            }
+        } catch (IOException ioe) {
+            System.out.print(ioe);
         }
     }
 }
