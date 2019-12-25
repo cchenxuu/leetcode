@@ -26,3 +26,9 @@
 来源：力扣（LeetCode）
 链接：https://leetcode-cn.com/problems/grumpy-bookstore-owner
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+
+# confusing
+
+```
+大家计算滑窗时（包括出题者）都没有考虑无效的滑窗。 比如grumpy = [1,1,0] X=2 时 滑窗不能是(grumpy[0], grumpy[1]) 这样 grumpy[2]==0其实X实际是3了。 滑窗为(grumpy[1], grumpy[2]) 才能满足X=2的要求。 是不是我想多了？
+```
